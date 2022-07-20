@@ -4,8 +4,8 @@
 
   import { SimpleSearch } from "flowbite-svelte";
   import { Previous, Next } from "flowbite-svelte";
-  import Heading from "../components/Heading.svelte";
-  import PokemonCardList from "../components/PokemonCardList.svelte";
+  import Heading from "../../components/Heading.svelte";
+  import PokemonCardList from "../../components/PokemonCardList.svelte";
 
   let limit = 20;
   let endpoint = "https://pokeapi.co/api/v2/pokemon?limit=" + { limit };
