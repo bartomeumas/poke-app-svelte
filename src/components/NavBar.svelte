@@ -8,6 +8,7 @@
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Pokedex", href: "/pokedex" },
+    { label: "Favorites", href: "/favorites" },
     { label: "Build your Team", href: "/build-your-team" },
     { label: "My Teams", href: "/my-teams" },
   ];

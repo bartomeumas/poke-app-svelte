@@ -1,34 +1,51 @@
-<script>
+<script context="module">
   import PokemonCard from "../../components/PokemonCard.svelte";
+  import PokemonStats from "../../components/PokemonStats.svelte";
+  import PokemonDetails from "../../components/PokemonDetails.svelte";
+  /** @type {import('./__types/[id]').Load} */
 
-  import axios from "axios";
-  import { onMount } from "svelte";
+  export async function load({ params, fetch }) {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
+    const pokemon = await res.json();
+    console.log(pokemon);
 
-  import Heading from "../../components/Heading.svelte";
+    if (res.ok) {
+      return {
+        props: {
+          pokemon,
+        },
+      };
+    }
 
-  /**
+    return {
+      status: res.status,
+      error: new Error("Could not find Pokemon"),
+    };
+  }
+</script>
+
+<script>
+  export /**
    * @type {{ name: any; }}
    */
-  export let pokemon;
+  let pokemon;
 
-  // let endpoint = `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`;
-  let endpoint = `https://pokeapi.co/api/v2/pokemon/pikachu`;
-  /**
-   * @type {any[]}
-   */
-
-  onMount(async function () {
-    try {
-      const response = await axios.get(endpoint);
-      pokemon = response.data;
-      console.log(pokemon);
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  let pokemonStats = {
+    hp: pokemon.stats[0].base_stat,
+    attack: pokemon.stats[1].base_stat,
+    defense: pokemon.stats[2].base_stat,
+    specialAttack: pokemon.stats[3].base_stat,
+    specialDefense: pokemon.stats[4].base_stat,
+    speed: pokemon.stats[5].base_stat,
+  };
 </script>
 
 <div>
-  <Heading title={pokemon.name} />
-  <!--<PokemonCard {pokemon} /> -->
+  <div class="sm:flex justify-between ">
+    <PokemonCard {pokemon} isDetails={true} />
+    <div class="w-full lg:flex lg:gap-x-4">
+      <PokemonDetails details={pokemon} />
+      <PokemonStats stats={pokemonStats} />
+    </div>
+  </div>
 </div>

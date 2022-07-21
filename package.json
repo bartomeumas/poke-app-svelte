@@ -32,7 +32,9 @@
   "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
+    "@sveltestack/svelte-query": "^1.6.0",
     "axios": "^0.21.1",
+    "broadcast-channel": "^4.14.0",
     "cookie": "^0.4.1"
   }
 }
