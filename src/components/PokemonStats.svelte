@@ -8,29 +8,23 @@
     TableBodyCell,
   } from "flowbite-svelte";
   export /**
-   * @type {{ hp: any; attack: any; defense: any; specialAttack: any; specialDefense: any; speed: any; }}
+   * @type {any}
    */
   let stats;
 </script>
 
-<div class="mt-4 lg:mt-0 rounded-sm w-full">
-  <Table>
+<div class="mt-4 sm:mt-0 rounded-sm w-full">
+  <Table class="text-center">
     <TableHead>
-      <TableHeadCell>HP</TableHeadCell>
-      <TableHeadCell>Atk</TableHeadCell>
-      <TableHeadCell>Def</TableHeadCell>
-      <TableHeadCell>SP.Atk</TableHeadCell>
-      <TableHeadCell>SP.DEF</TableHeadCell>
-      <TableHeadCell>SPD</TableHeadCell>
+      {#each stats as stat}
+        <TableHeadCell>{stat.stat.name}</TableHeadCell>
+      {/each}
     </TableHead>
     <TableBody class="divide-y">
       <TableBodyRow>
-        <TableBodyCell>{stats.hp}</TableBodyCell>
-        <TableBodyCell>{stats.attack}</TableBodyCell>
-        <TableBodyCell>{stats.defense}</TableBodyCell>
-        <TableBodyCell>{stats.specialAttack}</TableBodyCell>
-        <TableBodyCell>{stats.specialDefense}</TableBodyCell>
-        <TableBodyCell>{stats.speed}</TableBodyCell>
+        {#each stats as stat}
+          <TableBodyCell>{stat.base_stat}</TableBodyCell>
+        {/each}
       </TableBodyRow>
     </TableBody>
   </Table>

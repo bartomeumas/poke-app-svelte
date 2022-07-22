@@ -1,11 +1,12 @@
 <script context="module">
   import PokemonCard from "../../components/PokemonCard.svelte";
   import PokemonStats from "../../components/PokemonStats.svelte";
+  import PokemonMoves from "../../components/PokemonMoves.svelte";
   import PokemonDetails from "../../components/PokemonDetails.svelte";
-  /** @type {import('./__types/[id]').Load} */
+  /** @type {import('../../../.svelte-kit/types/src/routes/pokedex/__types/[id]').Load} */
 
   export async function load({ params, fetch }) {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
     const pokemon = await res.json();
     console.log(pokemon);
 
@@ -25,27 +26,27 @@
 </script>
 
 <script>
+  // @ts-nocheck
+
   export /**
    * @type {{ name: any; }}
    */
   let pokemon;
 
-  let pokemonStats = {
-    hp: pokemon.stats[0].base_stat,
-    attack: pokemon.stats[1].base_stat,
-    defense: pokemon.stats[2].base_stat,
-    specialAttack: pokemon.stats[3].base_stat,
-    specialDefense: pokemon.stats[4].base_stat,
-    speed: pokemon.stats[5].base_stat,
-  };
+  let pokemonStats = pokemon.stats;
+
+  let pokemonMoves = pokemon.moves;
 </script>
 
 <div>
-  <div class="sm:flex justify-between ">
-    <PokemonCard {pokemon} isDetails={true} />
-    <div class="w-full lg:flex lg:gap-x-4">
+  <div class="sm:flex justify-between gap-x-4">
+    <div>
+      <PokemonCard {pokemon} isDetails={true} />
       <PokemonDetails details={pokemon} />
+    </div>
+    <div class="w-full ">
       <PokemonStats stats={pokemonStats} />
+      <PokemonMoves moves={pokemonMoves} />
     </div>
   </div>
 </div>

@@ -1,20 +1,16 @@
-<!-- <script>
+<script>
   import { onMount } from "svelte";
   import axios from "axios";
-  import { Query, useQueryClient } from "@sveltestack/svelte-query";
 
   import { SimpleSearch } from "flowbite-svelte";
-  import { Previous, Next } from "flowbite-svelte";
   import Heading from "../../components/Heading.svelte";
   import PokemonCardList from "../../components/PokemonCardList.svelte";
 
   let limit = 20;
-  const changeLimit = 20;
   /**
    * @type {string}
    */
-  let endpoint;
-  $: endpoint = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
+  let endpoint = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
   /**
    * @type {any[]}
    */
@@ -30,19 +26,15 @@
   };
 
   onMount(fetchPokemons);
+</script>
 
-  const previous = () => {
-    if (limit + 1 > changeLimit) {
-      limit -= changeLimit;
-      console.log(limit);
-    }
-  };
-  const next = () => {
-    limit += changeLimit;
-    console.log(limit);
-  };
-</script> -->
-<script>
+<main>
+  <Heading title="Pokedex" />
+  <SimpleSearch />
+  <PokemonCardList {pokemons} />
+</main>
+
+<!-- <script>
   import { onMount } from "svelte";
   import axios from "axios";
   import { Query, useQueryClient } from "@sveltestack/svelte-query";
@@ -97,20 +89,9 @@
   };
 
   onMount(fetchPokemons);
-</script>
+</script> -->
 
 <!-- <main>
-  <Heading title="Pokedex" />
-  <SimpleSearch />
-  <PokemonCardList {pokemons} />
-  <div>{endpoint}</div>
-  <div class="flex justify-center mt-4">
-    <Previous on:previous={previous} icon />
-    <Next on:next={next} icon />
-  </div>
-</main> -->
-
-<main>
   <Heading title="Pokedex" />
   <SimpleSearch />
   <Query options={queryOptions}>
@@ -140,4 +121,4 @@
       {/if}
     </div>
   </Query>
-</main>
+</main> -->
