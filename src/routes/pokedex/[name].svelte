@@ -3,12 +3,16 @@
   import PokemonStats from "../../components/PokemonStats.svelte";
   import PokemonMoves from "../../components/PokemonMoves.svelte";
   import PokemonDetails from "../../components/PokemonDetails.svelte";
+  import { favorites } from "../../Favorites";
   /** @type {import('../../../.svelte-kit/types/src/routes/pokedex/__types/[id]').Load} */
-
+  export let isFavorited;
   export async function load({ params, fetch }) {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
     const pokemon = await res.json();
-    console.log(pokemon);
+    const { height, abilities } = pokemon;
+
+    console.log({ height }, { abilities });
+    console.log(favorites);
 
     if (res.ok) {
       return {
@@ -39,7 +43,7 @@
 </script>
 
 <div>
-  <div class="sm:flex justify-between gap-x-4">
+  <div class="sm:flex justify-betwePen gap-x-4">
     <div>
       <PokemonCard {pokemon} isDetails={true} />
       <PokemonDetails details={pokemon} />

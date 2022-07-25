@@ -21,7 +21,6 @@
   <NavUl {hidden}>
     <NavLi href="/" active={true}>Home</NavLi>
     <NavLi href="/pokedex">Pokedex</NavLi>
-    <NavLi href="/build-your-team">Build your team</NavLi>
     <NavLi href="/favorites">Favorites</NavLi>
     <NavLi href="/my-teams">My Teams</NavLi>
   </NavUl>

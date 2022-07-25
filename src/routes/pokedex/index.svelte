@@ -30,7 +30,7 @@
 
 <main>
   <Heading title="Pokedex" />
-  <SimpleSearch />
+  <div class="my-4"><SimpleSearch /></div>
   <PokemonCardList {pokemons} />
 </main>
 
