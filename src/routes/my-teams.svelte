@@ -1,7 +1,6 @@
 <script>
   import { Button } from "flowbite-svelte";
   import Heading from "../components/Heading.svelte";
-  import TeamCard from "../components/TeamCard.svelte";
   import TeamCardList from "../components/TeamCardList.svelte";
 </script>
 

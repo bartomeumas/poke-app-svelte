@@ -1,13 +1,14 @@
 <script>
-  import { favorites } from "../Favorites";
-
+  import { favs } from "../Favorites";
   import Heading from "../components/Heading.svelte";
   import PokemonCardList from "../components/PokemonCardList.svelte";
 
-  console.log(favorites);
+  const favsArray = [...favs];
+
+  console.log(favsArray);
 </script>
 
 <main>
-  <Heading title="Favorites" />
-  <PokemonCardList pokemons={favorites} />
+  <div class="mb-4"><Heading title="Favorites" /></div>
+  <PokemonCardList pokemons={favsArray} />
 </main>

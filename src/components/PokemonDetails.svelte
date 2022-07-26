@@ -10,6 +10,7 @@
    * @type {{ id: any; types: { type: { name: any; }; }[]; abilities: { ability: { name: any; }; }[]; weight: any; height: any; base_experience: any; }}
    */
   let details;
+  const { id, types, abilities, weight, height, base_experience } = details;
 </script>
 
 <div class="mt-4 rounded-sm w-full capitalize">
@@ -17,35 +18,35 @@
     <TableBody class="text-center divide-y">
       <TableBodyRow>
         <TableBodyCell>ID</TableBodyCell>
-        <TableBodyCell>{details.id}</TableBodyCell>
+        <TableBodyCell>{id}</TableBodyCell>
       </TableBodyRow>
       <TableBodyRow>
         <TableBodyCell>types</TableBodyCell>
         <TableBodyCell>
-          {details.types[0].type.name}
-          {#if details.types[1]}
-            / {details.types[1].type.name}
+          {types[0].type.name}
+          {#if types[1]}
+            / {types[1].type.name}
           {/if}
         </TableBodyCell>
       </TableBodyRow>
       <TableBodyRow>
         <TableBodyCell>Abilities</TableBodyCell>
         <TableBodyCell
-          >{details.abilities[0].ability.name} / {details.abilities[1].ability
+          >{abilities[0].ability.name} / {abilities[1].ability
             .name}</TableBodyCell
         >
       </TableBodyRow>
       <TableBodyRow>
         <TableBodyCell>Weight</TableBodyCell>
-        <TableBodyCell>{details.weight}</TableBodyCell>
+        <TableBodyCell>{weight}</TableBodyCell>
       </TableBodyRow>
       <TableBodyRow>
         <TableBodyCell>Height</TableBodyCell>
-        <TableBodyCell>{details.height}</TableBodyCell>
+        <TableBodyCell>{height}</TableBodyCell>
       </TableBodyRow>
       <TableBodyRow>
         <TableBodyCell>Base Exp</TableBodyCell>
-        <TableBodyCell>{details.base_experience}</TableBodyCell>
+        <TableBodyCell>{base_experience}</TableBodyCell>
       </TableBodyRow>
     </TableBody>
   </Table>
