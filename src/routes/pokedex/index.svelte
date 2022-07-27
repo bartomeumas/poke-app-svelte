@@ -10,7 +10,7 @@
 
   let counter = 0;
   let limit = 20;
-  let offset = counter * limit;
+  $: offset = counter * limit;
   /**
    * @type {string}
    */
@@ -20,7 +20,7 @@
    */
   export let pokemons = [];
 
-  const fetchPokemons = async function () {
+  const fetchPokemons = async (endpoint) => {
     try {
       const response = await axios.get(endpoint);
       pokemons = response.data.results;
@@ -29,27 +29,39 @@
     }
   };
 
+  $: refetch = fetchPokemons(endpoint);
+
+  $: {
+    console.log(pokemons);
+  }
+
+  const decreaseCounter = () => {
+    if (counter > 0) {
+      counter = counter -= 1;
+      console.log(counter);
+      console.log(endpoint);
+    }
+  };
+
+  const increaseCounter = () => {
+    counter = counter += 1;
+    console.log(counter);
+    console.log(endpoint);
+  };
+
   onMount(fetchPokemons);
 </script>
 
 <main>
-  <div>
+  <div class="overlay" transition:fade={{ duration: 400 }}>
     <Heading title="Pokedex" />
     <div class="my-4">
       <SimpleSearch />
     </div>
-    <PokemonCardList {pokemons} />
-    <Previous
-      on:previous={() => {
-        if (counter > 0) {
-          counter -= 1;
-        }
-      }}
-    />
-    <Next
-      on:next={() => {
-        counter += 1;
-      }}
-    />
+  </div>
+  <PokemonCardList {pokemons} />
+  <div class="overlay flex justify-center my-4" transition:fade>
+    <Previous on:previous={decreaseCounter} />
+    <Next on:next={increaseCounter} />
   </div>
 </main>

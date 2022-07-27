@@ -1,11 +1,13 @@
 <script context="module">
-  import { fade } from "svelte/transition";
+  /** @type {import('../../../.svelte-kit/types/src/routes/pokedex/__types/[id]').Load} */
+
+  import { fade, fly } from "svelte/transition";
 
   import PokemonCard from "../../components/PokemonCard.svelte";
   import PokemonStats from "../../components/PokemonStats.svelte";
   import PokemonMoves from "../../components/PokemonMoves.svelte";
   import PokemonDetails from "../../components/PokemonDetails.svelte";
-  /** @type {import('../../../.svelte-kit/types/src/routes/pokedex/__types/[id]').Load} */
+
   export let isFavorited;
   export async function load({ params, fetch }) {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
@@ -39,7 +41,7 @@
 
 <div
   class="overlay sm:flex justify-between gap-x-4"
-  transition:fade={{ delay: 0, duration: 400 }}
+  transition:fly={{ y: 200, duration: 400 }}
 >
   <div>
     <PokemonCard {pokemon} isDetails={true} />

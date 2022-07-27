@@ -1,6 +1,7 @@
 <script>
   import { fade } from "svelte/transition";
   import { favorites, favs } from "../Favorites";
+
   import { Heart } from "svelte-heros";
 
   export /**
@@ -17,9 +18,7 @@
   if (favs.has(name)) {
     isFavorited = true;
   }
-  /**
-   * @type {{ stats: { base_stat: any; }[]; }}
-   */
+
   export /**
    * @type {any}
    */
@@ -28,7 +27,7 @@
 
 <div
   class="overlay bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 w-full h-min sm:max-w-xs sm:mr-4"
-  transition:fade={{ delay: 25 * pokemonId, duration: 400 }}
+  transition:fade={{ delay: 40 * pokemonId, duration: 200 }}
 >
   {#if showName}
     <div
@@ -49,8 +48,7 @@
     {#if !isDetails}
       <img
         class="rounded-t-lg w-full"
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{pokemonId +
-          1}.png"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{pokemonId}.png"
         alt={name}
       />
     {/if}
