@@ -1,12 +1,10 @@
 <script context="module">
-  /** @type {import('../../../.svelte-kit/types/src/routes/pokedex/__types/[id]').Load} */
+  import { fly } from "svelte/transition";
 
-  import { fade, fly } from "svelte/transition";
-
-  import PokemonCard from "../../components/PokemonCard.svelte";
-  import PokemonStats from "../../components/PokemonStats.svelte";
-  import PokemonMoves from "../../components/PokemonMoves.svelte";
-  import PokemonDetails from "../../components/PokemonDetails.svelte";
+  import PokemonCard from "../components/PokemonCard.svelte";
+  import PokemonStats from "../components/PokemonStats.svelte";
+  import PokemonMoves from "../components/PokemonMoves.svelte";
+  import PokemonDetails from "../components/PokemonDetails.svelte";
 
   export let isFavorited;
   export async function load({ params, fetch }) {

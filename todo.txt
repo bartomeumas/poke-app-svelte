@@ -1,0 +1,4 @@
+Bugs:
+1. Favorited pokemon dont show heart filled in pokedex section
+2. Cant remove pokemon from favorites in favorites section
+3. Choppy animations
