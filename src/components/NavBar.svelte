@@ -6,6 +6,17 @@
     NavLi,
     NavUl,
   } from "flowbite-svelte";
+
+  import { getAuth, signOut } from "firebase/auth";
+
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {
+      console.log("Signed out");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 </script>
 
 <Navbar let:hidden let:toggle>
@@ -22,5 +33,6 @@
     <NavLi href="/">Home</NavLi>
     <NavLi href="/favorites">Favorites</NavLi>
     <NavLi href="/my-teams">My Teams</NavLi>
+    <button on:click={signOut} class="text-red-500">Sign Out</button>
   </NavUl>
 </Navbar>

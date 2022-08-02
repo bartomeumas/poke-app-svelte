@@ -36,6 +36,7 @@
     "axios": "^0.21.1",
     "broadcast-channel": "^4.14.0",
     "cookie": "^0.4.1",
-    "feather-icons": "^4.29.0"
+    "feather-icons": "^4.29.0",
+    "firebase": "^9.9.1"
   }
 }
